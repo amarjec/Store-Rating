@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import api from "../api";
 
 const AddUserForm = ({ onUserAdded }) => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", address: "", role: "normal_user" });
@@ -24,7 +25,7 @@ const AddUserForm = ({ onUserAdded }) => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.post("/api/admin/users", formData, { headers: { Authorization: `Bearer ${token}` } });
+      await api.post("/api/admin/users", formData, { headers: { Authorization: `Bearer ${token}` } });
       setStatus({ type: "success", msg: "User created successfully!" });
       setFormData({ name: "", email: "", password: "", address: "", role: "normal_user" });
       if (onUserAdded) onUserAdded();

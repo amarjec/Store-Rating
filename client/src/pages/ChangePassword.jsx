@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import api from "../api";
 
 const ChangePassword = () => {
   const [formData, setFormData] = useState({ oldPassword: "", newPassword: "", confirmPassword: "" });
@@ -21,7 +22,7 @@ const ChangePassword = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.put("/api/change-password", 
+      await api.put("/api/change-password", 
         { oldPassword: formData.oldPassword, newPassword: formData.newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );

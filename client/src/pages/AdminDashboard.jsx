@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import AddUserForm from "../components/AddUserForm";
 import AddStoreForm from "../components/AddStoreForm";
+import api from "../api";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ users: 0, stores: 0, ratings: 0 });
@@ -21,15 +22,15 @@ const AdminDashboard = () => {
       const token = localStorage.getItem("token");
       const config = { headers: { Authorization: `Bearer ${token}` } };
       
-      const statsRes = await axios.get("/api/admin/dashboard", config);
+      const statsRes = await api.get("/api/admin/dashboard", config);
       setStats(statsRes.data);
       
 
-      const usersRes = await axios.get(`/api/admin/users?sortBy=name&order=${sortOrder}`, config);
+      const usersRes = await api.get(`/api/admin/users?sortBy=name&order=${sortOrder}`, config);
       setUsers(usersRes.data);
 
 
-      const storesRes = await axios.get("/api/admin/stores", config);
+      const storesRes = await api.get("/api/admin/stores", config);
       setStores(storesRes.data);
 
     } catch (err) {

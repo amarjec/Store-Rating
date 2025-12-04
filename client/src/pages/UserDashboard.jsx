@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import StarRating from "../components/StarRating";
+import api from "../api";
 
 const UserDashboard = () => {
   const [stores, setStores] = useState([]);
@@ -11,7 +12,7 @@ const UserDashboard = () => {
   const fetchStores = async (searchTerm = "") => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`/api/stores?search=${searchTerm}`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await api.get(`/api/stores?search=${searchTerm}`, { headers: { Authorization: `Bearer ${token}` } });
       setStores(res.data);
       setLoading(false);
     } catch (err) { console.error(err); }

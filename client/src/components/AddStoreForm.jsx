@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import api from "../api";
 
 const AddStoreForm = ({ owners, onStoreAdded }) => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const AddStoreForm = ({ owners, onStoreAdded }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.post("/api/admin/stores", formData, {
+      await api.post("/api/admin/stores", formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

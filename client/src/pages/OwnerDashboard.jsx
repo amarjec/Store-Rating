@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import api from "../api";
 
 const OwnerDashboard = () => {
   const [data, setData] = useState(null);
@@ -11,7 +12,7 @@ const OwnerDashboard = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/owner/dashboard", { headers: { Authorization: `Bearer ${token}` } });
+        const res = await api.get("/api/owner/dashboard", { headers: { Authorization: `Bearer ${token}` } });
         setData(res.data);
       } catch (err) { setError("No store data found."); } 
       finally { setLoading(false); }
