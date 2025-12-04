@@ -71,10 +71,9 @@ cd store-rating-system
 
 Navigate to the server folder and install dependencies.
 
-```bash
+Bash
 cd server
 npm install
-
 Create a .env file in the /server folder:
 
 Code snippet
@@ -85,25 +84,24 @@ DB_HOST=localhost      # Or your Cloud DB Host
 DB_PORT=5432           # Use 10774 if using Aiven/Cloud
 JWT_SECRET=mysecretkey123
 PORT=5000
-
 Seed the Database (Important): This script creates the tables and populates the database with the Admin, Owner, and dummy data so you can log in immediately.
 
-```bash
+Bash
 node seed.js
 Start the Server:
 
-```bash
+Bash
 npm run dev
 3. Frontend Setup
 
 Open a new terminal, navigate to the client folder.
 
-```bash
+Bash
 cd client
 npm install
 Start the React App:
 
-```bash
+Bash
 npm run dev
 Access the app at http://localhost:5173.
 
@@ -123,7 +121,6 @@ Access the app at http://localhost:5173.
     ├── models/          # Database Schema (User, Store, Rating)
     ├── routes/          # API Endpoints
     └── seed.js          # Database population script
-
 ✅ Form Validations (Strict Requirements)
 Name: Min 20 characters, Max 60 characters.
 
