@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(cors({
     origin: '*', 
-    credentials: true
+    credentials: true,
 }));
 app.use(express.json());
 

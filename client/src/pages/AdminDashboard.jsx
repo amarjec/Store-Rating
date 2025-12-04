@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import AddUserForm from "../components/AddUserForm";
 import AddStoreForm from "../components/AddStoreForm";

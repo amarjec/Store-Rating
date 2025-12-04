@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import StarRating from "../components/StarRating";
 import api from "../api";
@@ -28,7 +27,7 @@ const UserDashboard = () => {
   const submitRating = async (storeId, ratingValue) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.post("/api/rating", { storeId, rating: ratingValue }, { headers: { Authorization: `Bearer ${token}` } });
+      await api.post("/api/rating", { storeId, rating: ratingValue }, { headers: { Authorization: `Bearer ${token}` } });
       alert("Rating submitted successfully!");
       fetchStores(search);
     } catch (err) { alert("Failed to submit rating"); }
